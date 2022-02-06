@@ -10,7 +10,7 @@ I made this tool for myself because sometimes I'm literally too lazy to even jus
 ## Preparation
 ### LibreTranslate
 Make sure you've got an API-key. If you own the server instance, you can create one with the following command:
-``ltmanage keys add 120``.
+`ltmanage keys add 120`.
 
 Refer to the [LibreTranslate documentation](https://github.com/LibreTranslate/LibreTranslate#add-new-keys) for more
  information. 
@@ -24,7 +24,7 @@ and enter your API-key.
 
 ## Usage
 The syntax is as follows:
-``php index.php from to source [options]``.
+`php index.php from to source [options]`.
 
 So to translate text from Portuguese to English from the clipboard you would want to use:
 ```
@@ -36,7 +36,8 @@ To translate English text that you've entered into dmenu to Portuguese, you shou
 php index.php en pt input --display-result
 ```
 
-The ``--display-result`` (or ``-d``) option makes sure that the translated text will be displayed using ``notify-send``.
+The `--display-result` (or `-d`) option makes sure that the translated text will be displayed using ``notify-send``.
+ For the other options, take a look in `index.php` at the switch on line 29.
 
 ## i3wm
 I use i3wm bindings for quick access to a lot of useful scripts including this script. Here are my bindings for
@@ -46,5 +47,5 @@ I use i3wm bindings for quick access to a lot of useful scripts including this s
 bindsym Ctrl+$Alt+e exec --no-startup-id "php ~/repos/dmenu-translator/index.php pt en clipboard -d"
 
 # translate English from dmenu into Portuguese
-bindsym Ctrl+$Alt+p exec --no-startup-id "php ~/repos/dmenu-translator/index.php en pt input"
+bindsym Ctrl+$Alt+p exec --no-startup-id "php ~/repos/dmenu-translator/index.php en pt input -c"
 ```

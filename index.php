@@ -31,6 +31,10 @@ foreach ($argv as $arg) {
         case "-d":
             $options["display-result"] = true;
             break;
+        case "--copy-result":
+        case "-c":
+            $options["copy-result"] = true;
+            break;
         default:
             ed("Invalid argument: " . $arg);
     }
@@ -54,10 +58,12 @@ if ($httpcode != 200 || $parsed == null || !isset($parsed->translatedText))
     notifySendAndEnd("Translation failed");
 
 $translation = $parsed->translatedText;
-if (!setClipboard($translation))
-    notifySend("Could not copy translation to clipboard!");
-else
-    notifySend("Translation copied to clipboard!");
+if (array_key_exists("copy-result", $options)) {
+    if (!setClipboard($translation))
+        notifySend("Could not copy translation to clipboard!");
+    else
+        notifySend("Translation copied to clipboard!");
+}
 
 if (array_key_exists("display-result", $options))
     notifySend("Translation: " . $translation);
