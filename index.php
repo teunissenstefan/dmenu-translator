@@ -56,7 +56,8 @@ if ($httpcode != 200 || $parsed == null || !isset($parsed->translatedText))
 $translation = $parsed->translatedText;
 if (!setClipboard($translation))
     notifySend("Could not copy translation to clipboard!");
+else
+    notifySend("Translation copied to clipboard!");
 
-notifySend("Translation copied to clipboard!");
 if (array_key_exists("display-result", $options))
     notifySend("Translation: " . $translation);
